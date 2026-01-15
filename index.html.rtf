@@ -1,0 +1,149 @@
+{\rtf1\ansi\ansicpg874\cocoartf2761
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab560
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\f0\fs26 \cf0 <!DOCTYPE html>\
+<html lang="th">\
+<head>\
+    <meta charset="UTF-8">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <title>\uc0\u3624 \u3607 \u3607 . 36 \u3611 \u3637  - \u3612 \u3641 \u3657 \u3594 \u3656 \u3623 \u3618 \u3629 \u3633 \u3592 \u3593 \u3619 \u3636 \u3618 \u3632 </title>\
+    <script src="https://cdn.tailwindcss.com"></script>\
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&display=swap" rel="stylesheet">\
+    <style>\
+        body \{ font-family: 'Sarabun', sans-serif; background-color: #0c1a33; color: white; \}\
+        .glass \{ background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); \}\
+        .mic-active \{ box-shadow: 0 0 20px #ef4444; animation: pulse 1.5s infinite; \}\
+        @keyframes pulse \{ 0% \{ transform: scale(1); \} 50% \{ transform: scale(1.1); \} 100% \{ transform: scale(1); \} \}\
+    </style>\
+</head>\
+<body class="flex flex-col items-center justify-center min-h-screen p-6">\
+\
+    <div id="reg-screen" class="glass p-8 rounded-3xl w-full max-w-md text-center">\
+        <img src="https://via.placeholder.com/100" alt="Logo" class="mx-auto mb-4 rounded-full"> <h1 class="text-2xl font-bold mb-2 text-yellow-500">\uc0\u3618 \u3636 \u3609 \u3604 \u3637 \u3605 \u3657 \u3629 \u3609 \u3619 \u3633 \u3610 </h1>\
+        <p class="mb-6 text-sm text-gray-300">\uc0\u3591 \u3634 \u3609 \u3623 \u3633 \u3609 \u3626 \u3606 \u3634 \u3611 \u3609 \u3634  \u3624 \u3607 \u3607 .\u3626 \u3626 .\u3607 \u3627 \u3634 \u3619  \u3588 \u3619 \u3610 \u3619 \u3629 \u3610  36 \u3611 \u3637 </p>\
+        \
+        <input type="text" id="guestName" placeholder="\uc0\u3594 \u3639 \u3656 \u3629 -\u3609 \u3634 \u3617 \u3626 \u3585 \u3640 \u3621 " class="w-full bg-white/20 border border-white/30 p-4 rounded-xl mb-3 text-center text-white placeholder-gray-400 outline-none focus:border-yellow-500">\
+        <input type="text" id="guestDept" placeholder="\uc0\u3627 \u3609 \u3656 \u3623 \u3618 \u3591 \u3634 \u3609 " class="w-full bg-white/20 border border-white/30 p-4 rounded-xl mb-6 text-center text-white placeholder-gray-400 outline-none focus:border-yellow-500">\
+        \
+        <button onclick="handleRegister()" class="w-full bg-yellow-600 hover:bg-yellow-500 text-white py-4 rounded-xl font-bold text-lg transition shadow-lg">\uc0\u3621 \u3591 \u3607 \u3632 \u3648 \u3610 \u3637 \u3618 \u3609 \u3649 \u3621 \u3632 \u3648 \u3619 \u3636 \u3656 \u3617 \u3605 \u3657 \u3609 </button>\
+    </div>\
+\
+    <div id="main-screen" class="hidden w-full max-w-md flex flex-col items-center">\
+        <div class="glass p-6 rounded-3xl w-full text-center mb-6">\
+            <h2 id="welcomeMsg" class="text-xl font-bold text-yellow-500 mb-2">\uc0\u3626 \u3623 \u3633 \u3626 \u3604 \u3637 \u3588 \u3619 \u3633 \u3610 </h2>\
+            <div id="display-text" class="text-gray-200 h-24 flex items-center justify-center italic text-lg px-4">\
+                "\uc0\u3585 \u3604 \u3652 \u3617 \u3588 \u3660 \u3648 \u3614 \u3639 \u3656 \u3629 \u3626 \u3629 \u3610 \u3606 \u3634 \u3617 \u3586 \u3657 \u3629 \u3617 \u3641 \u3621 \u3591 \u3634 \u3609 \u3652 \u3604 \u3657 \u3648 \u3621 \u3618 \u3588 \u3619 \u3633 \u3610 "\
+            </div>\
+        </div>\
+\
+        <button id="micBtn" onclick="toggleListening()" class="bg-red-600 w-28 h-28 rounded-full flex items-center justify-center shadow-2xl transition-all border-4 border-white/20">\
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">\
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />\
+            </svg>\
+        </button>\
+\
+        <div class="mt-8 grid grid-cols-2 gap-3 w-full text-xs">\
+            <div class="glass p-3 rounded-xl text-center">\uc0\u55357 \u56517  \u3585 \u3635 \u3627 \u3609 \u3604 \u3585 \u3634 \u3619 \u3623 \u3633 \u3609 \u3609 \u3637 \u3657 </div>\
+            <div class="glass p-3 rounded-xl text-center">\uc0\u55357 \u56525  \u3649 \u3612 \u3609 \u3612 \u3633 \u3591 \u3605 \u3621 \u3634 \u3604 \u3614 \u3629 \u3648 \u3614 \u3637 \u3618 \u3591 </div>\
+        </div>\
+    </div>\
+\
+    <script>\
+        // --- \uc0\u9881 \u65039  \u3626 \u3656 \u3623 \u3609 \u3585 \u3634 \u3619 \u3605 \u3633 \u3657 \u3591 \u3588 \u3656 \u3634  (CONFIG) ---\
+        const CONFIG = \{\
+            GEMINI_API_KEY: 'gen-lang-client-0033096174',\
+            APPS_SCRIPT_URL: 'https://accounts.google.com/signin/oauth/warning?authuser=0&part=AJi8hAOxWJOYusCh0NV2DaYS3uxYGYlgBgioQY2F1eOAP2QTtYxzeeGLjEF0mn_VlBkxJITTo7TReyxlbyCMb73y3mUltoauQ-zSqJoR0NfBjeM0KtclmuBjAsl8g46cksMZFkh4ek4Wvgblf7-Z1Guxytzpa-iHXS5wau8Tfrwuhpw31ZzS-ICquhDGlV46CmyIM7x0S3gnpBHiHuXO8HeZh4znoTepLKCgKp-f4LQtyEyj3pArKz3VUvuKeN3ZSqBNgZRH2UP8_hD2CGPIMgHbuo92086C_u1RIvdKHvv-gwF9s00AM0GqUh0eeqLfFO4sUit5nEGp2Zt2V35ncCz79ps9XjZUnaaJzccJ-ZPWP5U7okTnIOyLBosNtkYviXUs3DkWOyBVflS8J-NnkmRo-8rK1qzl56hyFyDlzXsOHfHyxssLJAXSpvuEYlu-jP9FT9Fb1UsG0oa_KlOEb72JvBOTcR2YOOdFjnDSWJ2JuUEhWxutjRNOhQlzeAqfEVUoZzZSC9R7Yc0EHTElg-RJiofcX74s4BvlFfIIC7vhf7y8x9JDnNH6KF2XBo45PEYK62fSdgQ9A6itRmn0HlwSiogPbkYDaLVrcnKDlviy40cVpnVm-eZ-0Jt-r4MDm4lBJOqsJo3VMOEcmh3JNj05Z4qcYWfjbQ&flowName=GeneralOAuthFlow&hl=en-US&as=S-1608139950%3A1768451263282223&client_id=557687438067-h5uq40ren0lq11n1i5ustjau4kecks0r.apps.googleusercontent.com&rapt=AEjHL4OPi-OudoE67xHVl-P7KF8ZfIDTbPBNWnMHJUspGe4HAms-gGVwtyw54W6KzuvwEgWieCo7nknTxX9YnTdhod0WW2ul3bU-ao3Akbc6AM4A-7WF_rY#',\
+            SYSTEM_PROMPT: "\uc0\u3588 \u3640 \u3603 \u3588 \u3639 \u3629 \u3612 \u3641 \u3657 \u3594 \u3656 \u3623 \u3618 \u3629 \u3633 \u3592 \u3593 \u3619 \u3636 \u3618 \u3632 \u3591 \u3634 \u3609  \u3624 \u3607 \u3607 . 36 \u3611 \u3637  \u3605 \u3629 \u3610 \u3588 \u3635 \u3606 \u3634 \u3617 \u3626 \u3640 \u3616 \u3634 \u3614  \u3621 \u3591 \u3607 \u3657 \u3634 \u3618 \u3604 \u3657 \u3623 \u3618 \u3588 \u3619 \u3633 \u3610 /\u3588 \u3656 \u3632  \u3586 \u3657 \u3629 \u3617 \u3641 \u3621 \u3591 \u3634 \u3609 : 08:00 \u3614 \u3636 \u3608 \u3637 \u3626 \u3591 \u3590 \u3660 , 09:30 \u3617 \u3629 \u3610 \u3607 \u3640 \u3609 \u3585 \u3634 \u3619 \u3624 \u3638 \u3585 \u3625 \u3634 , 10:30 \u3605 \u3621 \u3634 \u3604 \u3614 \u3629 \u3648 \u3614 \u3637 \u3618 \u3591  \u3626 \u3606 \u3634 \u3609 \u3607 \u3637 \u3656 \u3588 \u3639 \u3629 \u3629 \u3634 \u3588 \u3634 \u3619 \u3629 \u3648 \u3609 \u3585 \u3611 \u3619 \u3632 \u3626 \u3591 \u3588 \u3660 "\
+        \};\
+\
+        let isListening = false;\
+        const synth = window.speechSynthesis;\
+\
+        // 1. \uc0\u3619 \u3632 \u3610 \u3610 \u3614 \u3641 \u3604  (Text to Speech)\
+        function speak(text) \{\
+            const uttr = new SpeechSynthesisUtterance(text);\
+            uttr.lang = 'th-TH';\
+            synth.speak(uttr);\
+        \}\
+\
+        // 2. \uc0\u3619 \u3632 \u3610 \u3610 \u3621 \u3591 \u3607 \u3632 \u3648 \u3610 \u3637 \u3618 \u3609 \
+        async function handleRegister() \{\
+            const name = document.getElementById('guestName').value;\
+            const dept = document.getElementById('guestDept').value;\
+\
+            if (!name) return alert("\uc0\u3585 \u3619 \u3640 \u3603 \u3634 \u3651 \u3626 \u3656 \u3594 \u3639 \u3656 \u3629 \u3586 \u3629 \u3591 \u3588 \u3640 \u3603 \u3588 \u3619 \u3633 \u3610 ");\
+\
+            // \uc0\u3626 \u3656 \u3591 \u3586 \u3657 \u3629 \u3617 \u3641 \u3621 \u3621 \u3591  Google Sheets (\u3652 \u3617 \u3656 \u3619 \u3629 \u3612 \u3621  \u3648 \u3614 \u3639 \u3656 \u3629 \u3588 \u3623 \u3634 \u3617 \u3648 \u3619 \u3655 \u3623 )\
+            fetch(CONFIG.APPS_SCRIPT_URL, \{\
+                method: 'POST',\
+                mode: 'no-cors',\
+                body: JSON.stringify(\{ name: name, department: dept \})\
+            \});\
+\
+            // \uc0\u3648 \u3611 \u3621 \u3637 \u3656 \u3618 \u3609 \u3627 \u3609 \u3657 \u3634 \u3649 \u3621 \u3632 \u3585 \u3621 \u3656 \u3634 \u3623 \u3605 \u3657 \u3629 \u3609 \u3619 \u3633 \u3610 \
+            document.getElementById('reg-screen').classList.add('hidden');\
+            document.getElementById('main-screen').classList.remove('hidden');\
+            document.getElementById('welcomeMsg').innerText = `\uc0\u3626 \u3623 \u3633 \u3626 \u3604 \u3637 \u3588 \u3640 \u3603  $\{name\}`;\
+            \
+            speak(`\uc0\u3618 \u3636 \u3609 \u3604 \u3637 \u3605 \u3657 \u3629 \u3609 \u3619 \u3633 \u3610 \u3588 \u3640 \u3603  $\{name\} \u3648 \u3586 \u3657 \u3634 \u3626 \u3641 \u3656 \u3591 \u3634 \u3609 \u3588 \u3619 \u3610 \u3619 \u3629 \u3610  36 \u3611 \u3637  \u3624 \u3607 \u3607 . \u3588 \u3656 \u3632  \u3626 \u3629 \u3610 \u3606 \u3634 \u3617 \u3586 \u3657 \u3629 \u3617 \u3641 \u3621 \u3591 \u3634 \u3609 \u3585 \u3633 \u3610 \u3604 \u3636 \u3593 \u3633 \u3609 \u3652 \u3604 \u3657 \u3648 \u3621 \u3618 \u3609 \u3632 \u3588 \u3632 `);\
+        \}\
+\
+        // 3. \uc0\u3619 \u3632 \u3610 \u3610 \u3619 \u3633 \u3610 \u3648 \u3626 \u3637 \u3618 \u3591  (Speech to Text)\
+        function toggleListening() \{\
+            if (isListening) return;\
+            \
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();\
+            recognition.lang = 'th-TH';\
+\
+            recognition.onstart = () => \{\
+                isListening = true;\
+                document.getElementById('micBtn').classList.add('mic-active');\
+                document.getElementById('display-text').innerText = "\uc0\u3585 \u3635 \u3621 \u3633 \u3591 \u3615 \u3633 \u3591 ...";\
+            \};\
+\
+            recognition.onresult = async (event) => \{\
+                const text = event.results[0][0].transcript;\
+                document.getElementById('display-text').innerText = `\uc0\u3588 \u3640 \u3603 \u3606 \u3634 \u3617 \u3623 \u3656 \u3634 : $\{text\}`;\
+                await askGemini(text);\
+            \};\
+\
+            recognition.onend = () => \{\
+                isListening = false;\
+                document.getElementById('micBtn').classList.remove('mic-active');\
+            \};\
+\
+            recognition.start();\
+        \}\
+\
+        // 4. \uc0\u3648 \u3594 \u3639 \u3656 \u3629 \u3617 \u3605 \u3656 \u3629  Gemini AI\
+        async function askGemini(question) \{\
+            document.getElementById('display-text').innerText = "AI \uc0\u3585 \u3635 \u3621 \u3633 \u3591 \u3588 \u3636 \u3604 ...";\
+            \
+            try \{\
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=$\{CONFIG.GEMINI_API_KEY\}`, \{\
+                    method: 'POST',\
+                    headers: \{ 'Content-Type': 'application/json' \},\
+                    body: JSON.stringify(\{\
+                        contents: [\{ parts: [\{ text: `$\{CONFIG.SYSTEM_PROMPT\}\\n\uc0\u3588 \u3635 \u3606 \u3634 \u3617 \u3592 \u3634 \u3585 \u3649 \u3586 \u3585 : $\{question\}` \}] \}]\
+                    \})\
+                \});\
+\
+                const data = await response.json();\
+                const aiAnswer = data.candidates[0].content.parts[0].text;\
+                \
+                document.getElementById('display-text').innerText = aiAnswer;\
+                speak(aiAnswer);\
+            \} catch (error) \{\
+                console.error(error);\
+                speak("\uc0\u3586 \u3629 \u3629 \u3616 \u3633 \u3618 \u3588 \u3656 \u3632  \u3619 \u3632 \u3610 \u3610 \u3586 \u3633 \u3604 \u3586 \u3657 \u3629 \u3591 \u3648 \u3621 \u3655 \u3585 \u3609 \u3657 \u3629 \u3618  \u3621 \u3629 \u3591 \u3651 \u3627 \u3617 \u3656 \u3629 \u3637 \u3585 \u3588 \u3619 \u3633 \u3657 \u3591 \u3609 \u3632 \u3588 \u3632 ");\
+            \}\
+        \}\
+    </script>\
+</body>\
+</html>\
+}
